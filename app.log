@@ -1069,3 +1069,208 @@
 2026-05-23 12:12:55,021 [INFO] uvicorn.error: Application shutdown complete.
 2026-05-23 12:12:55,022 [INFO] uvicorn.error: Finished server process [25376]
 2026-05-23 12:12:55,236 [INFO] uvicorn.error: Stopping reloader process [31736]
+2026-05-23 12:35:18,771 [INFO] uvicorn.error: Will watch for changes in these directories: ['C:\\latin\\my_llm_service']
+2026-05-23 12:35:18,773 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-05-23 12:35:18,774 [INFO] uvicorn.error: Started reloader process [32240] using WatchFiles
+2026-05-23 12:35:19,724 [INFO] uvicorn.error: Started server process [33116]
+2026-05-23 12:35:19,728 [INFO] uvicorn.error: Waiting for application startup.
+2026-05-23 12:35:19,729 [INFO] main: Приложение запущено
+2026-05-23 12:35:19,730 [INFO] uvicorn.error: Application startup complete.
+2026-05-23 12:57:27,493 [INFO] services.business_logic: Начата обработка сообщения: Hello, how are you?
+2026-05-23 12:57:27,497 [INFO] llm.llm_module: Сформирован промпт для LLM
+2026-05-23 12:57:27,497 [INFO] llm.llm_module: Попытка 1 вызова LLM API
+2026-05-23 12:57:28,332 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 12:57:30,344 [INFO] llm.llm_module: Попытка 2 вызова LLM API
+2026-05-23 12:57:30,658 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 12:57:34,678 [INFO] llm.llm_module: Попытка 3 вызова LLM API
+2026-05-23 12:57:34,989 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 12:57:34,989 [WARNING] llm.llm_module: Все попытки вызова LLM исчерпаны, возвращаем fallback
+2026-05-23 12:57:34,991 [INFO] services.business_logic: Сообщение успешно обработано
+2026-05-23 12:59:44,742 [ERROR] uvicorn.error: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\latin\my_llm_service\api\chat.py", line 20, in chat_endpoint
+    response = await process_chat_message(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reuse already awaited coroutine
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\api\chat.py", line 23, in chat_endpoint
+    logger = logging.getLogger(__name__)
+             ^^^^^^^
+NameError: name 'logging' is not defined
+2026-05-23 13:00:41,377 [INFO] services.business_logic: Начата обработка сообщения: Привет
+2026-05-23 13:00:41,377 [INFO] llm.llm_module: Сформирован промпт для LLM
+2026-05-23 13:00:41,377 [INFO] llm.llm_module: Попытка 1 вызова LLM API
+2026-05-23 13:00:41,785 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:00:43,783 [INFO] llm.llm_module: Попытка 2 вызова LLM API
+2026-05-23 13:00:44,136 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:00:48,143 [INFO] llm.llm_module: Попытка 3 вызова LLM API
+2026-05-23 13:00:48,550 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:00:48,551 [WARNING] llm.llm_module: Все попытки вызова LLM исчерпаны, возвращаем fallback
+2026-05-23 13:00:48,552 [INFO] services.business_logic: Сообщение успешно обработано
+2026-05-23 13:01:07,911 [INFO] services.business_logic: Начата обработка сообщения: Привет как дела
+2026-05-23 13:01:07,911 [INFO] llm.llm_module: Сформирован промпт для LLM
+2026-05-23 13:01:07,912 [INFO] llm.llm_module: Попытка 1 вызова LLM API
+2026-05-23 13:01:08,234 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:01:10,253 [INFO] llm.llm_module: Попытка 2 вызова LLM API
+2026-05-23 13:01:10,627 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:01:14,636 [INFO] llm.llm_module: Попытка 3 вызова LLM API
+2026-05-23 13:01:14,949 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:01:14,949 [WARNING] llm.llm_module: Все попытки вызова LLM исчерпаны, возвращаем fallback
+2026-05-23 13:01:14,950 [INFO] services.business_logic: Сообщение успешно обработано
+2026-05-23 13:03:16,996 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:03:21,883 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:03:24,463 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:03:51,787 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:03:53,663 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:04:57,002 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:04:59,972 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:05:02,789 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:05:20,354 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:06:51,465 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:06:54,140 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:06:56,408 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:07:07,354 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:07:12,641 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:07:22,327 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:07:26,721 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:07:38,313 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:08:31,269 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:08:43,914 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:08:48,148 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:08:55,111 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:08:56,219 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:08:58,750 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:00,766 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:04,346 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:05,666 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:07,277 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:08,592 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:11,676 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:12,884 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:14,093 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:09:29,931 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:11:08,783 [INFO] services.business_logic: Начата обработка сообщения: Hello, how are you?
+2026-05-23 13:11:08,799 [INFO] llm.llm_module: Сформирован промпт для LLM
+2026-05-23 13:11:08,799 [INFO] llm.llm_module: Попытка 1 вызова LLM API
+2026-05-23 13:11:09,357 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:11:11,370 [INFO] llm.llm_module: Попытка 2 вызова LLM API
+2026-05-23 13:11:11,666 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:11:15,672 [INFO] llm.llm_module: Попытка 3 вызова LLM API
+2026-05-23 13:11:15,993 [ERROR] llm.llm_module: Ошибка соединения с LLM API: [Errno 11001] getaddrinfo failed
+2026-05-23 13:11:15,994 [WARNING] llm.llm_module: Все попытки вызова LLM исчерпаны, возвращаем fallback
+2026-05-23 13:11:15,995 [INFO] services.business_logic: Сообщение успешно обработано
+2026-05-23 13:12:36,488 [ERROR] uvicorn.error: Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\latin\my_llm_service\api\chat.py", line 20, in chat_endpoint
+    response = await process_chat_message(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: cannot reuse already awaited coroutine
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 56, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\applications.py", line 1159, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 134, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 120, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 674, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\venv\Lib\site-packages\fastapi\routing.py", line 328, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\latin\my_llm_service\api\chat.py", line 23, in chat_endpoint
+    logger = logging.getLogger(__name__)
+             ^^^^^^^
+NameError: name 'logging' is not defined
+2026-05-23 13:16:44,923 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:16:45,292 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:16:45,651 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:16:46,009 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:17:03,245 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:17:41,225 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:17:43,197 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:18:02,968 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:19:14,136 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:19:25,381 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:19:27,805 [INFO] watchfiles.main: 1 change detected
+2026-05-23 13:19:29,827 [INFO] watchfiles.main: 1 change detected
